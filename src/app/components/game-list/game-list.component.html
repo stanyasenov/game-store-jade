@@ -1,0 +1,210 @@
+<!-- Enhanced Game List Component HTML -->
+<!-- src/app/components/game-list/game-list.component.html -->
+
+<div class="container mt-4">
+    <div class="row">
+      <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h2>
+            <i class="fas fa-list me-2"></i>
+            {{getCurrentTitle()}}
+          </h2>
+          <button class="btn btn-outline-primary" (click)="refresh()" [disabled]="isLoading">
+            <i class="fas fa-sync-alt me-2" [class.fa-spin]="isLoading"></i>
+            Refresh
+          </button>
+        </div>
+  
+        <!-- Enhanced View Toggle Buttons -->
+        <div class="btn-group mb-4" role="group">
+          <button 
+            type="button" 
+            class="btn"
+            [class.btn-primary]="currentView === 'enhanced'"
+            [class.btn-outline-primary]="currentView !== 'enhanced'"
+            (click)="setView('enhanced')">
+            <i class="fas fa-layer-group me-1"></i>
+            Enhanced ({{enhancedGames.length}})
+          </button>
+          <button 
+            type="button" 
+            class="btn"
+            [class.btn-warning]="currentView === 'duplicates'"
+            [class.btn-outline-warning]="currentView !== 'duplicates'"
+            (click)="setView('duplicates')">
+            <i class="fas fa-copy me-1"></i>
+            Duplicates ({{duplicateCount}})
+          </button>
+          <button 
+            type="button" 
+            class="btn"
+            [class.btn-info]="currentView === 'sqlite'"
+            [class.btn-outline-info]="currentView !== 'sqlite'"
+            (click)="setView('sqlite')">
+            <i class="fas fa-database me-1"></i>
+            SQLite ({{sqliteGames.length}})
+          </button>
+          <button 
+            type="button" 
+            class="btn"
+            [class.btn-success]="currentView === 'ontology'"
+            [class.btn-outline-success]="currentView !== 'ontology'"
+            (click)="setView('ontology')">
+            <i class="fas fa-project-diagram me-1"></i>
+            Ontology ({{ontologyGames.length}})
+          </button>
+        </div>
+  
+        <!-- Info Alert for Duplicates -->
+        <div *ngIf="duplicateCount > 0 && currentView === 'enhanced'" class="alert alert-info">
+          <i class="fas fa-info-circle me-2"></i>
+          <strong>{{duplicateCount}} duplicate game(s) detected!</strong> 
+          Games that exist in both databases are automatically merged. 
+          <button class="btn btn-sm btn-outline-primary ms-2" (click)="setView('duplicates')">
+            View Duplicates Only
+          </button>
+        </div>
+  
+        <!-- Loading State -->
+        <div *ngIf="isLoading" class="text-center py-5">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <p class="mt-3 text-muted">Loading games...</p>
+        </div>
+  
+        <!-- Error State -->
+        <div *ngIf="error" class="alert alert-danger">
+          <i class="fas fa-exclamation-triangle me-2"></i>
+          {{error}}
+        </div>
+  
+        <!-- Games Grid -->
+        <div *ngIf="!isLoading && !error" class="row g-4">
+          <div class="col-md-6 col-lg-4" *ngFor="let game of getCurrentGames()">
+            <div class="card h-100 shadow-sm" 
+                 [class.border-warning]="isEnhancedGame(game) && game.sources.length > 1"
+                 [class.border-2]="isEnhancedGame(game) && game.sources.length > 1">
+              <div class="card-body">
+                <!-- Game Title with Duplicate Indicator -->
+                <h5 class="card-title d-flex align-items-center justify-content-between">
+                  <span class="text-truncate" [title]="game.title">{{game.title}}</span>
+                  <i *ngIf="isEnhancedGame(game) && game.sources.length > 1" 
+                     class="fas fa-copy text-warning ms-2" 
+                     title="This game exists in multiple databases"></i>
+                </h5>
+                
+                <!-- Sources Display for Enhanced Games -->
+                <div *ngIf="isEnhancedGame(game)" class="mb-2">
+                  <small class="text-muted">Sources:</small>
+                  <span *ngFor="let source of game.sources; let last = last" class="ms-1">
+                    <span class="badge" [ngClass]="getSourceBadgeClass(source)">
+                      {{source}}
+                    </span>
+                    <span *ngIf="!last">, </span>
+                  </span>
+                  
+                  <!-- Differences Indicator -->
+                  <div *ngIf="game.hasDifferences" class="mt-1">
+                    <small class="text-warning">
+                      <i class="fas fa-exclamation-triangle me-1"></i>
+                      Differences detected in: {{game.differences?.join(', ')}}
+                    </small>
+                  </div>
+                </div>
+                
+                <!-- Regular Source Display for Non-Enhanced Games -->
+                <div *ngIf="!isEnhancedGame(game) && game.source" class="mb-2">
+                  <small class="text-muted">Source:</small>
+                  <span class="badge ms-1" 
+                        [class.bg-primary]="game.source?.includes('SQLite')"
+                        [class.bg-success]="game.source?.includes('Ontology')">
+                    {{game.source}}
+                  </span>
+                </div>
+                
+                <!-- Game Description -->
+                <p class="card-text text-muted small" *ngIf="game.description">
+                  {{game.description | slice:0:100}}{{game.description && game.description.length > 100 ? '...' : ''}}
+                </p>
+                
+                <!-- Game Details Grid -->
+                <div class="row g-2 small">
+                  <div class="col-6" *ngIf="game.genre">
+                    <strong>Genre:</strong><br>
+                    <span class="badge bg-secondary">{{game.genre}}</span>
+                  </div>
+                  <div class="col-6" *ngIf="game.platform">
+                    <strong>Platform:</strong><br>
+                    <span class="badge bg-info">{{game.platform}}</span>
+                  </div>
+                  <div class="col-6" *ngIf="game.price">
+                    <strong>Price:</strong><br>
+                    <span class="text-success">${{game.price}}</span>
+                  </div>
+                  <div class="col-6" *ngIf="game.developer">
+                    <strong>Developer:</strong><br>
+                    <span class="text-truncate d-block">{{game.developer}}</span>
+                  </div>
+                  <div class="col-6" *ngIf="game.publisher">
+                    <strong>Publisher:</strong><br>
+                    <span class="text-truncate d-block">{{game.publisher}}</span>
+                  </div>
+                  <div class="col-6" *ngIf="game.releaseDate">
+                    <strong>Release:</strong><br>
+                    <span>{{game.releaseDate}}</span>
+                  </div>
+                </div>
+  
+                <!-- Detailed Comparison for Duplicates -->
+                <div *ngIf="isEnhancedGame(game) && game.sources.length > 1 && currentView === 'duplicates'" 
+                     class="mt-3 border-top pt-3">
+                  <h6 class="text-muted">Database Comparison:</h6>
+                  
+                  <!-- SQLite Data -->
+                  <div *ngIf="game.sqliteData" class="mb-2">
+                    <small class="fw-bold text-primary">
+                      <i class="fas fa-database me-1"></i>SQLite:
+                    </small>
+                    <div class="ps-3 small">
+                      <div *ngIf="game.sqliteData.price">Price: ${{game.sqliteData.price}}</div>
+                      <div *ngIf="game.sqliteData.genre">Genre: {{game.sqliteData.genre}}</div>
+                      <div *ngIf="game.sqliteData.platform">Platform: {{game.sqliteData.platform}}</div>
+                    </div>
+                  </div>
+                  
+                  <!-- Ontology Data -->
+                  <div *ngIf="game.ontologyData" class="mb-2">
+                    <small class="fw-bold text-success">
+                      <i class="fas fa-project-diagram me-1"></i>Ontology:
+                    </small>
+                    <div class="ps-3 small">
+                      <div *ngIf="game.ontologyData.price">Price: ${{game.ontologyData.price}}</div>
+                      <div *ngIf="game.ontologyData.genre">Genre: {{game.ontologyData.genre}}</div>
+                      <div *ngIf="game.ontologyData.platform">Platform: {{game.ontologyData.platform}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- No Games Message -->
+        <div *ngIf="!isLoading && !error && getCurrentGames().length === 0" class="text-center py-5">
+          <i class="fas fa-gamepad fa-4x text-muted mb-3"></i>
+          <h4 class="text-muted">No games found</h4>
+          <p class="text-muted">
+            <span *ngIf="currentView === 'duplicates'">No duplicate games detected.</span>
+            <span *ngIf="currentView !== 'duplicates'">There are no games in the selected database.</span>
+          </p>
+        </div>
+  
+        <!-- Info Message -->
+        <div *ngIf="message && !isLoading" class="alert alert-info mt-4">
+          <i class="fas fa-info-circle me-2"></i>
+          {{message}}
+        </div>
+      </div>
+    </div>
+  </div>

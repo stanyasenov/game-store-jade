@@ -1,0 +1,765 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology/"
+     xml:base="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:ontology="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasDeveloper -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasDeveloper">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#VideoGame"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Developer"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasFeature -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasFeature">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#VideoGame"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#GameFeature"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasMultiplayerFeature -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasMultiplayerFeature">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasFeature"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#MultiplayerFeature"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasPrequel -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasPrequel">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasSequel"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#VideoGame"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#VideoGame"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasPublisher -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasPublisher">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasPublisher"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#VideoGame"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Publisher"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasSequel -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasSequel">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#VideoGame"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#VideoGame"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasSinglePlayerFeature -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasSinglePlayerFeature">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasFeature"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#SinglePlayerFeature"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasSuccessor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasSuccessor">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#VideoGame"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#VideoGame"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#requiresBaseGame -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#requiresBaseGame">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#DLCFeature"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#VideoGame"/>
+        <rdfs:comment>Indicates that a DLC feature requires a specific base game to function</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#runsOnPlatform -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#runsOnPlatform">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#VideoGame"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Platform"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasCountryOfOrigin -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasCountryOfOrigin">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Publisher"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasDescription -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasDescription">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#GameFeature"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#VideoGame"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasESRB_Rating -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasESRB_Rating">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#VideoGame"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasIdentifier -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasIdentifier">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#GameFeature"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Publisher"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#VideoGame"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasLocation -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasLocation">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Developer"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasName">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasIdentifier"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#GameFeature"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Publisher"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasPrice -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasPrice">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#DLCFeature"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#VideoGame"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>The official retail price of the game in USD</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasReleaseDate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasReleaseDate">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#DLCFeature"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#VideoGame"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasTitle -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasTitle">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#hasIdentifier"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#VideoGame"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#isIncludedInBaseGame -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#isIncludedInBaseGame">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#GameFeature"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#ActionGame -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#ActionGame">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#VideoGame"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#AdventureGame -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#AdventureGame">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#VideoGame"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#CompetitiveMode -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#CompetitiveMode">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#GameMode"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Console -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Console">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Platform"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#DLCFeature -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#DLCFeature">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#GameFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Developer -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Developer"/>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#GameFeature -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#GameFeature"/>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#GameMode -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#GameMode">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#GameFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#LocalMultiplayer -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#LocalMultiplayer">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#MultiplayerFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#MultiplayerFeature -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#MultiplayerFeature">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#GameFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#OnlineMultiplayer -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#OnlineMultiplayer">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#MultiplayerFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#PC -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#PC">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Platform"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Platform -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Platform"/>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Publisher -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Publisher"/>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#RolePlayingGame -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#RolePlayingGame">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#VideoGame"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#SimulationGame -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#SimulationGame">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#VideoGame"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#SinglePlayerFeature -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#SinglePlayerFeature">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#GameFeature"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#SportsGame -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#SportsGame">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#VideoGame"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#StategyGame -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#StategyGame">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#VideoGame"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#StoryMode -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#StoryMode">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#GameMode"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#SurvivalMode -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#SurvivalMode">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#GameMode"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#VideoGame -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#VideoGame"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#CivGatheringStorm -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#CivGatheringStorm">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#DLCFeature"/>
+        <ontology:requiresBaseGame rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#CivilizationVI"/>
+        <ontology:hasDescription>Expansion adding environmental effects and future technologies</ontology:hasDescription>
+        <ontology:hasName>Civilization VI: Gathering Storm</ontology:hasName>
+        <ontology:hasPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">39.99</ontology:hasPrice>
+        <ontology:hasReleaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2019-02-14T00:00:00</ontology:hasReleaseDate>
+        <ontology:isIncludedInBaseGame rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ontology:isIncludedInBaseGame>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#CivilizationVI -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#CivilizationVI">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#StategyGame"/>
+        <ontology:hasDeveloper rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#FiraxisGames"/>
+        <ontology:hasFeature rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#CivGatheringStorm"/>
+        <ontology:hasPublisher rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#TakeTwo"/>
+        <ontology:runsOnPlatform rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#MacOS"/>
+        <ontology:runsOnPlatform rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#NintendoSwitch"/>
+        <ontology:runsOnPlatform rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#PlayStation5"/>
+        <ontology:runsOnPlatform rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Windows"/>
+        <ontology:runsOnPlatform rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#XboxSeriesX"/>
+        <ontology:hasDescription>Turn based stategy game where players build and lead empires</ontology:hasDescription>
+        <ontology:hasESRB_Rating>E10+</ontology:hasESRB_Rating>
+        <ontology:hasPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">59.99</ontology:hasPrice>
+        <ontology:hasReleaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-10-21T07:00:00</ontology:hasReleaseDate>
+        <ontology:hasTitle>Civilization VI</ontology:hasTitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#EA_Sports -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#EA_Sports">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Developer"/>
+        <ontology:hasLocation>Vancouver, Canada</ontology:hasLocation>
+        <ontology:hasName>EA Sports</ontology:hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#EldenRing -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#EldenRing">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#RolePlayingGame"/>
+        <ontology:hasDeveloper rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#FromSoftwareDev"/>
+        <ontology:hasFeature rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#EldenRingMultiplayer"/>
+        <ontology:hasFeature rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#EldenRingShadowsOfTheErdtree"/>
+        <ontology:hasPublisher rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#FromSoftware"/>
+        <ontology:runsOnPlatform rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#PlayStation5"/>
+        <ontology:runsOnPlatform rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Windows"/>
+        <ontology:runsOnPlatform rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#XboxSeriesX"/>
+        <ontology:hasDescription>An open-world action PRG created in collaboration with George R.R.Martin</ontology:hasDescription>
+        <ontology:hasESRB_Rating>M</ontology:hasESRB_Rating>
+        <ontology:hasPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">59.99</ontology:hasPrice>
+        <ontology:hasReleaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-02-25T07:00:00</ontology:hasReleaseDate>
+        <ontology:hasTitle>Elden Ring</ontology:hasTitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#EldenRingMultiplayer -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#EldenRingMultiplayer">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#OnlineMultiplayer"/>
+        <ontology:hasDescription>Cooperative and PvP multiplayer features</ontology:hasDescription>
+        <ontology:hasName>Elden Ring Multiplayer</ontology:hasName>
+        <ontology:isIncludedInBaseGame rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ontology:isIncludedInBaseGame>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#EldenRingShadowsOfTheErdtree -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#EldenRingShadowsOfTheErdtree">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#DLCFeature"/>
+        <ontology:requiresBaseGame rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#EldenRing"/>
+        <ontology:hasDescription>Major expansion for Elden Ring featuring new areas and bosses</ontology:hasDescription>
+        <ontology:hasName>Shadows of the Erdtree</ontology:hasName>
+        <ontology:hasPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">39.99</ontology:hasPrice>
+        <ontology:isIncludedInBaseGame rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ontology:isIncludedInBaseGame>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#ElectronicArts -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#ElectronicArts">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Publisher"/>
+        <ontology:hasCountryOfOrigin>United States</ontology:hasCountryOfOrigin>
+        <ontology:hasName>Electronic Arts</ontology:hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#FIFA23 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#FIFA23">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#SportsGame"/>
+        <ontology:hasDeveloper rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#EA_Sports"/>
+        <ontology:hasFeature rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#FIFA23UltimateTeam"/>
+        <ontology:hasPublisher rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#ElectronicArts"/>
+        <ontology:runsOnPlatform rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#NintendoSwitch"/>
+        <ontology:runsOnPlatform rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#PlayStation5"/>
+        <ontology:runsOnPlatform rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Windows"/>
+        <ontology:runsOnPlatform rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#XboxSeriesX"/>
+        <ontology:hasDescription>The latest installment in EA&apos;s football simulation franchise</ontology:hasDescription>
+        <ontology:hasESRB_Rating>E</ontology:hasESRB_Rating>
+        <ontology:hasPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">69.99</ontology:hasPrice>
+        <ontology:hasReleaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2022-09-30T07:00:00</ontology:hasReleaseDate>
+        <ontology:hasTitle>FIFA 23</ontology:hasTitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#FIFA23UltimateTeam -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#FIFA23UltimateTeam">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#CompetitiveMode"/>
+        <ontology:hasDescription>Card collecting and team building competitive mode</ontology:hasDescription>
+        <ontology:hasName>FIFA 23 Ultimate Team</ontology:hasName>
+        <ontology:isIncludedInBaseGame rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ontology:isIncludedInBaseGame>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#FiraxisGames -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#FiraxisGames">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Developer"/>
+        <ontology:hasLocation>Maryland, United States</ontology:hasLocation>
+        <ontology:hasName>Firaxis Games</ontology:hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#FromSoftware -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#FromSoftware">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Publisher"/>
+        <ontology:hasCountryOfOrigin>Japan</ontology:hasCountryOfOrigin>
+        <ontology:hasName>FromSoftware</ontology:hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#FromSoftwareDev -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#FromSoftwareDev">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Developer"/>
+        <ontology:hasLocation>Tokyo, Japan</ontology:hasLocation>
+        <ontology:hasName>FromSOftware</ontology:hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#MacOS -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#MacOS">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#PC"/>
+        <ontology:hasName>MacOS</ontology:hasName>
+        <ontology:hasReleaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2001-01-01T07:00:00</ontology:hasReleaseDate>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Maxis -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Maxis">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Developer"/>
+        <ontology:hasLocation>Redwood City, United States</ontology:hasLocation>
+        <ontology:hasName>Maxis</ontology:hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Microsoft -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Microsoft">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Publisher"/>
+        <ontology:hasCountryOfOrigin>United States</ontology:hasCountryOfOrigin>
+        <ontology:hasName>Microsoft</ontology:hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Minecraft -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Minecraft">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#AdventureGame"/>
+        <ontology:hasDeveloper rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Mojang"/>
+        <ontology:hasFeature rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#MinecraftCreative"/>
+        <ontology:hasPublisher rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#MojangStudios"/>
+        <ontology:runsOnPlatform rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#MacOS"/>
+        <ontology:runsOnPlatform rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#NintendoSwitch"/>
+        <ontology:runsOnPlatform rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#PlayStation5"/>
+        <ontology:runsOnPlatform rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Windows"/>
+        <ontology:runsOnPlatform rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#XboxSeriesX"/>
+        <ontology:hasDescription>The best game ever made</ontology:hasDescription>
+        <ontology:hasESRB_Rating>E10+</ontology:hasESRB_Rating>
+        <ontology:hasPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">29.99</ontology:hasPrice>
+        <ontology:hasReleaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2011-11-18T07:00:00</ontology:hasReleaseDate>
+        <ontology:hasTitle>Minecraft</ontology:hasTitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#MinecraftCreative -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#MinecraftCreative">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#GameMode"/>
+        <ontology:hasDescription>A game mode that allows players unlimited resources and flying</ontology:hasDescription>
+        <ontology:hasName>Minecraft Creative Mode</ontology:hasName>
+        <ontology:isIncludedInBaseGame rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ontology:isIncludedInBaseGame>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Mojang -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Mojang">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Developer"/>
+        <ontology:hasLocation>Stockholm, Sweden</ontology:hasLocation>
+        <ontology:hasName>Mojang Studios</ontology:hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#MojangStudios -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#MojangStudios">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Publisher"/>
+        <ontology:hasCountryOfOrigin>Sweden</ontology:hasCountryOfOrigin>
+        <ontology:hasName>Mojang Studios</ontology:hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#NintendoSwitch -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#NintendoSwitch">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Console"/>
+        <ontology:hasName>Nintendo Switch</ontology:hasName>
+        <ontology:hasReleaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2016-10-21T07:00:00</ontology:hasReleaseDate>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#PlayStation5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#PlayStation5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Console"/>
+        <ontology:hasName>PlayStation 5</ontology:hasName>
+        <ontology:hasReleaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-01-01T07:00:00</ontology:hasReleaseDate>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Sims4Seasons -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Sims4Seasons">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#DLCFeature"/>
+        <ontology:requiresBaseGame rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#TheSims4"/>
+        <ontology:hasDescription>Expansion pack adding weather and seasonal activities</ontology:hasDescription>
+        <ontology:hasName>The Sims 4 Seasons</ontology:hasName>
+        <ontology:hasPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">39.99</ontology:hasPrice>
+        <ontology:hasReleaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2018-06-22T00:00:00</ontology:hasReleaseDate>
+        <ontology:isIncludedInBaseGame rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</ontology:isIncludedInBaseGame>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#TakeTwo -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#TakeTwo">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Publisher"/>
+        <ontology:hasCountryOfOrigin>United States</ontology:hasCountryOfOrigin>
+        <ontology:hasName>Take-Two Interactive</ontology:hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#TheSims4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#TheSims4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#SimulationGame"/>
+        <ontology:hasDeveloper rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Maxis"/>
+        <ontology:hasFeature rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Sims4Seasons"/>
+        <ontology:hasPublisher rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#ElectronicArts"/>
+        <ontology:runsOnPlatform rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#MacOS"/>
+        <ontology:runsOnPlatform rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#PlayStation5"/>
+        <ontology:runsOnPlatform rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Windows"/>
+        <ontology:hasDescription>A game about life simulation</ontology:hasDescription>
+        <ontology:hasESRB_Rating>T</ontology:hasESRB_Rating>
+        <ontology:hasPrice rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">39.99</ontology:hasPrice>
+        <ontology:hasReleaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2014-09-02T07:00:00</ontology:hasReleaseDate>
+        <ontology:hasTitle>The Sims 4</ontology:hasTitle>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Windows -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Windows">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#PC"/>
+        <ontology:hasName>Windows PC</ontology:hasName>
+        <ontology:hasReleaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">1985-01-01T07:00:00</ontology:hasReleaseDate>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#XboxSeriesX -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#XboxSeriesX">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rujam/ontologies/2025/3/games/ontology#Console"/>
+        <ontology:hasName>Xbox Series X</ontology:hasName>
+        <ontology:hasReleaseDate rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2020-10-21T07:00:00</ontology:hasReleaseDate>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+

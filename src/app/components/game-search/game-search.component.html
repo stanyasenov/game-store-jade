@@ -1,0 +1,106 @@
+<div class="container mt-4">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <h2 class="text-center mb-4">
+          <i class="fas fa-search me-2"></i>
+          Search Games
+        </h2>
+  
+        <div class="card shadow-sm mb-4">
+          <div class="card-body">
+            <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+              <div class="row g-3">
+                <div class="col-md-8">
+                  <label for="title" class="form-label">Game Title</label>
+                  <input 
+                    type="text" 
+                    id="title"
+                    class="form-control" 
+                    formControlName="title"
+                    placeholder="Enter game title..."
+                    [class.is-invalid]="searchForm.get('title')?.invalid && searchForm.get('title')?.touched">
+                  <div class="invalid-feedback">
+                    Please enter at least 2 characters
+                  </div>
+                </div>
+                <div class="col-md-4 d-flex align-items-end">
+                  <button 
+                    type="submit" 
+                    class="btn btn-primary w-100 me-2"
+                    [disabled]="searchForm.invalid || isSearching">
+                    <span *ngIf="isSearching" class="spinner-border spinner-border-sm me-2"></span>
+                    <i *ngIf="!isSearching" class="fas fa-search me-2"></i>
+                    {{isSearching ? 'Searching...' : 'Search'}}
+                  </button>
+                  <button 
+                    type="button" 
+                    class="btn btn-outline-secondary"
+                    (click)="clearSearch()">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+  
+        <!-- Search Results -->
+        <div *ngIf="searchResult" class="card shadow-sm">
+          <div class="card-header bg-success text-white">
+            <i class="fas fa-check-circle me-2"></i>
+            Game Found!
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-8">
+                <h5 class="card-title">{{searchResult.game.title}}</h5>
+                <p class="card-text" *ngIf="searchResult.game.description">
+                  {{searchResult.game.description}}
+                </p>
+                <div class="row">
+                  <div class="col-sm-6" *ngIf="searchResult.game.genre">
+                    <strong>Genre:</strong> {{searchResult.game.genre}}
+                  </div>
+                  <div class="col-sm-6" *ngIf="searchResult.game.platform">
+                    <strong>Platform:</strong> {{searchResult.game.platform}}
+                  </div>
+                  <div class="col-sm-6" *ngIf="searchResult.game.developer">
+                    <strong>Developer:</strong> {{searchResult.game.developer}}
+                  </div>
+                  <div class="col-sm-6" *ngIf="searchResult.game.publisher">
+                    <strong>Publisher:</strong> {{searchResult.game.publisher}}
+                  </div>
+                  <div class="col-sm-6" *ngIf="searchResult.game.price">
+                    <strong>Price:</strong> ${{searchResult.game.price}}
+                  </div>
+                  <div class="col-sm-6" *ngIf="searchResult.game.releaseDate">
+                    <strong>Release Date:</strong> {{searchResult.game.releaseDate}}
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="alert alert-info">
+                  <small>
+                    <strong>Source:</strong> {{searchResult.source}}<br>
+                    <strong>Message:</strong> {{searchResult.message}}
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Error Message -->
+        <div *ngIf="searchError" class="alert alert-danger">
+          <i class="fas fa-exclamation-triangle me-2"></i>
+          {{searchError}}
+        </div>
+  
+        <!-- No Results -->
+        <div *ngIf="searchResult === null && !isSearching && searchForm.get('title')?.value && !searchError" class="alert alert-warning">
+          <i class="fas fa-search me-2"></i>
+          No games found with that title. Try a different search term.
+        </div>
+      </div>
+    </div>
+  </div>

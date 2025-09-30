@@ -1,0 +1,17 @@
+com\gamestore\api\JadeGatewayService.class
+com\gamestore\ontology\OntologyDBConnector.class
+com\gamestore\agents\GameStopAgent.class
+com\gamestore\GameStoreApplication.class
+com\gamestore\agents\DistributorAgent$GameSearchRequestServer.class
+com\gamestore\agents\ApiGatewayAgent$HandleGameStopResponses.class
+com\gamestore\agents\GameStopAgent$GameSearchRequestServer$DistributorResponseReceiver.class
+com\gamestore\agents\DistributorAgent.class
+com\gamestore\agents\ApiGatewayAgent.class
+com\gamestore\GameStoreMain.class
+com\gamestore\api\JadeGatewayService$SearchGameRequest.class
+com\gamestore\api\GameController.class
+com\gamestore\agents\ApiGatewayAgent$ProcessApiRequests.class
+com\gamestore\agents\GameStopAgent$GameSearchRequestServer.class
+com\gamestore\agents\GameStopAgent$DistributorResponseReceiver.class
+com\gamestore\db\RelationalDBConnector.class
+com\gamestore\model\Game.class
